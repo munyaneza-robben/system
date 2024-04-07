@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Collection System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      margin-top: 1;
+    }
+    form {
+      width: 50%;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: calc(100% - 22px); /* Adjusted width to accommodate the border */
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      
+    }
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      padding: 16px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #db9f9f;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+    nav {
+      background-color: #e7e5e5;
+      overflow: hidden;
+    }
+    nav img {
+      height: 50px;
+      margin: 5px 20px;
+      float: left;
+    }
+    nav a {
+      float: right;
+      color: rgb(16, 3, 3);
+      text-align: center;
+      padding: 20px 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #555555;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <img src="tms_logo.png" alt="TMS Logo">
+        <a href="#home">Home</a>
+        <a href="#tickets">Tickets</a>
+        <a href="#students">Students</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+  <div class="container">
+    <form id="ticketForm">
+      <h2 style="text-align: center;">Ticket Collection System</h2>
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName" required><br>
+      <label for="ticketAmount">Ticket Amount:</label>
+      <input type="number" id="ticketAmount" required><br>
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" required><br>
+      <button type="submit">Submit Ticket</button>
+    </form>
+  </div>
+  
+  <table id="ticketTable">
+    <tr>
+      <th>Student Name</th>
+      <th>Ticket Amount</th>
+      <th>Destination</th>
+    </tr>
+  </table>
+
+  <script>
+    document.getElementById('ticketForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var studentName = document.getElementById('studentName').value;
+      var ticketAmount = document.getElementById('ticketAmount').value;
+      var destination = document.getElementById('destination').value;
+      
+      addTicketToTable(studentName, ticketAmount, destination);
+      
+      document.getElementById('studentName').value = '';
+      document.getElementById('ticketAmount').value = '';
+      document.getElementById('destination').value = '';
+    });
+    
+    function addTicketToTable(studentName, ticketAmount, destination) {
+      var table = document.getElementById('ticketTable');
+      var row = table.insertRow(-1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      cell1.textContent = studentName;
+      cell2.textContent = ticketAmount;
+      cell3.textContent = destination;
+    }
+  </script>
+</body>
+</html>
